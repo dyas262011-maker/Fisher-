@@ -1,0 +1,58 @@
+/**
+ * css/game.css
+ * HUD saat memancing (chip atas, bar tegangan/stamina, hint bawah),
+ * banner notifikasi ikan langka, dan kartu hasil Jual/Simpan/Pamerkan.
+ */
+#hud{position:fixed;inset:0;pointer-events:none;z-index:20;
+  padding:calc(10px + var(--safe-t)) 10px calc(10px + var(--safe-b))}
+#hud .top{display:flex;gap:6px;pointer-events:auto}
+.chip{background:rgba(8,20,30,0.72);border:1px solid var(--line);border-radius:20px;
+  padding:6px 12px;font-size:13px;color:var(--ink);backdrop-filter:blur(2px)}
+.chipBtn{cursor:pointer}
+.chipBtn:active{background:var(--panel)}
+#hLoc{max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#hMenu{margin-left:auto;font-weight:700;letter-spacing:1px}
+
+/* ---------- Notifikasi ikan langka ---------- */
+.rare{
+  position:absolute;left:50%;top:calc(56px + var(--safe-t));transform:translate(-50%,-14px);
+  padding:8px 18px;border-radius:22px;font-family:var(--font-display);font-weight:700;font-size:14px;
+  text-align:center;white-space:nowrap;color:var(--rc,var(--accent));
+  background:rgba(8,14,26,0.88);border:1px solid var(--rc,var(--accent));
+  opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;
+}
+.rare.show{opacity:1;transform:translate(-50%,0)}
+.rare.tier2{box-shadow:0 0 18px var(--rg,transparent)}
+.rare.tier3{box-shadow:0 0 30px var(--rg,transparent);font-size:15.5px;animation:rarePulse 0.9s ease-in-out infinite}
+@keyframes rarePulse{0%,100%{transform:translate(-50%,0) scale(1)}50%{transform:translate(-50%,0) scale(1.04)}}
+
+/* ---------- HUD bawah ---------- */
+#hud .bot{position:absolute;left:10px;right:10px;bottom:calc(10px + var(--safe-b));display:flex;flex-direction:column;gap:6px}
+.hint{text-align:center;background:rgba(8,20,30,0.72);border:1px solid var(--line);border-radius:20px;
+  padding:9px 14px;font-size:14px;color:var(--ink)}
+.hint.warn{color:var(--danger);border-color:var(--danger)}
+.barrow{display:flex;align-items:center;gap:8px;background:rgba(8,20,30,0.72);border:1px solid var(--line);
+  border-radius:10px;padding:6px 10px;font-size:11.5px;color:var(--ink-dim)}
+.barrow span{flex:none;width:76px}
+.barrow .track{flex:1;height:8px;background:var(--bg-deep);border-radius:6px;overflow:hidden}
+.barrow .track i{display:block;height:100%;width:0%;background:var(--tide);transition:width .08s linear,background .15s}
+#rowPower .track i{background:var(--accent)}
+
+/* ---------- Kartu hasil tangkapan ---------- */
+.overlay{position:fixed;inset:0;background:rgba(4,8,16,0.72);display:flex;align-items:center;
+  justify-content:center;z-index:60;padding:20px}
+.cm-card{
+  width:100%;max-width:300px;background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:18px;text-align:center;position:relative;
+  box-shadow:0 0 0 1px var(--rc,transparent) inset;
+}
+.overlay.tierGlow .cm-card{box-shadow:0 0 34px var(--rc,transparent),0 0 0 1px var(--rc,transparent) inset}
+.cm-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);
+  color:#2a1608;font-size:11px;font-weight:700;padding:3px 12px;border-radius:12px;display:none}
+.cm-rarity{margin-bottom:4px}
+#cmName{font-family:var(--font-display);font-size:20px;margin:2px 0 8px}
+#cmCanvas{width:100%;max-width:220px;height:110px;display:block;margin:0 auto 8px;background:var(--bg-deep);border-radius:8px}
+.cm-stats{font-size:13.5px;color:var(--ink);margin:0 0 6px}
+.cm-desc{font-size:12.5px;color:var(--ink-dim);margin:0 0 14px;line-height:1.4}
+.cm-actions{display:flex;gap:8px}
+.cm-actions .btn{margin:0;padding:11px 8px;font-size:13.5px}
