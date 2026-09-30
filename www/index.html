@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0c2233">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Fisher Craft — game memancing offline: koleksi ikan, toko, akuarium, dan pencapaian, tanpa perlu internet.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<title>Fisher Craft</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<!-- HUD saat memancing -->
+<div id="hud" class="hidden">
+  <div class="top">
+    <span class="chip" id="hCoin"></span>
+    <span class="chip" id="hLv"></span>
+    <button class="chip chipBtn" id="hLoc"></button>
+    <button class="chip chipBtn" id="hMenu" aria-label="Menu jeda">III</button>
+  </div>
+  <div id="rare" class="rare"></div>
+  <div class="bot">
+    <div id="hint" class="hint"></div>
+    <div id="rowPower" class="barrow hidden"><span>Kekuatan</span><div class="track"><i id="fillPower"></i></div></div>
+    <div id="rowTen" class="barrow hidden"><span>Tegangan</span><div class="track"><i id="fillTen"></i></div></div>
+    <div id="rowDist" class="barrow hidden"><span>Jarak</span><div class="track"><i id="fillDist"></i></div></div>
+    <div id="rowStam" class="barrow hidden"><span>Stamina ikan</span><div class="track"><i id="fillStam"></i></div></div>
+  </div>
+</div>
+
+<!-- Kartu hasil tangkapan: Jual / Simpan / Pamerkan -->
+<div id="catchModal" class="overlay hidden">
+  <div class="cm-card">
+    <div id="cmBadge" class="cm-badge"></div>
+    <div class="cm-rarity" id="cmRarity"></div>
+    <h3 id="cmName"></h3>
+    <canvas id="cmCanvas" width="220" height="120"></canvas>
+    <p class="cm-stats" id="cmStats"></p>
+    <p class="cm-desc" id="cmDesc"></p>
+    <div class="cm-actions">
+      <button class="btn" id="cmSell">Jual</button>
+      <button class="btn alt" id="cmKeep">Simpan</button>
+      <button class="btn alt" id="cmShow">Pamerkan</button>
+    </div>
+    <button class="link" id="cmClose">Lanjutkan memancing</button>
+  </div>
+</div>
+
+<!-- Mulai -->
+<section id="login" class="screen">
+  <h1 class="wordmark">Fisher Craft</h1>
+  <div class="shimmer" aria-hidden="true"><canvas id="shimmerCv"></canvas></div>
+  <p class="sub">Buku log pemancing pribadimu — 100% offline, tanpa akun, tanpa internet.</p>
+  <input id="uName" maxlength="14" placeholder="Nama pemain" autocomplete="off">
+  <button class="btn" id="bGuest">Mulai Bermain</button>
+  <p class="note">Semua progres tersimpan di perangkat ini.</p>
+</section>
+
+<!-- Menu utama -->
+<section id="menu" class="screen hidden">
+  <h1 class="wordmark sm">Fisher Craft</h1>
+  <nav class="ledger">
+    <button class="ledger-row" data-a="play"><i class="ic ic-rod"></i>Main</button>
+    <button class="ledger-row" data-a="col"><i class="ic ic-book"></i>Koleksi Ikan</button>
+    <button class="ledger-row" data-a="shop"><i class="ic ic-bag"></i>Toko</button>
+    <button class="ledger-row" data-a="inv"><i class="ic ic-tackle"></i>Inventori</button>
+    <button class="ledger-row" data-a="aq"><i class="ic ic-tank"></i>Akuarium</button>
+    <button class="ledger-row" data-a="ach"><i class="ic ic-medal"></i>Pencapaian</button>
+    <button class="ledger-row" data-a="set"><i class="ic ic-gear"></i>Pengaturan</button>
+  </nav>
+  <p class="menu-foot" id="menuFoot"></p>
+</section>
+
+<!-- Pilih lokasi -->
+<section id="locSelect" class="screen hidden">
+  <header class="screen-head"><button class="link" id="locBack">Kembali</button><b>Pilih Lokasi</b><span></span></header>
+  <div class="loc-list" id="locList"></div>
+</section>
+
+<!-- Panel umum (isi dibuat oleh ui.js): koleksi, toko, inventori, akuarium, teman, pencapaian, pengaturan -->
+<section id="panel" class="screen hidden">
+  <header class="screen-head"><button class="link" id="pX">Kembali</button><b id="pT"></b><span></span></header>
+  <div id="pB" class="panel-body"></div>
+</section>
+
+<div id="toast"></div>
+
+<script src="js/fish.js"></script>
+<script src="js/locations.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/shop.js"></script>
+<script src="js/player.js"></script>
+<script src="js/save.js"></script>
+<script src="js/aquarium.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/events.js"></script>
+<script src="js/fishing.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
