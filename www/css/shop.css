@@ -1,0 +1,58 @@
+/**
+ * css/shop.css
+ * Komponen isi panel (dibangun oleh ui.js ke #pB): baris koleksi/toko/
+ * inventori, tab, saklar pengaturan, dan grid akuarium. Baris memakai
+ * pola "ledger" yang sama dengan menu utama supaya seluruh game konsisten.
+ */
+.panel-body{width:100%;max-width:480px;padding-bottom:24px}
+
+.tabbar{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;padding-bottom:2px}
+.tab{flex:none;background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);
+  border-radius:16px;padding:6px 13px;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.tab.on{background:var(--accent);color:#2a1608;border-color:var(--accent);font-weight:600}
+
+.rowlist{display:flex;flex-direction:column}
+.row-main{display:flex;align-items:center;gap:2px;font-size:14.5px}
+.row-main b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.row-price{font-size:12.5px;color:var(--accent);white-space:nowrap;margin-left:6px}
+.row-sub{font-size:12px;color:var(--ink-dim);margin-top:3px}
+.row-desc{font-size:11.5px;color:var(--ink-faint);margin-top:3px;line-height:1.4}
+.row-action{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.owned-tag{font-size:12px;color:var(--good);font-weight:600}
+.row.ach.done{border-left-color:var(--good);opacity:0.85}
+.row.ach.done .row-main::after{content:'✓';color:var(--good);margin-left:6px;font-weight:700}
+
+.coin-head{font-size:13.5px;color:var(--accent);font-weight:600;margin-bottom:10px}
+.progress-head{font-size:13.5px;color:var(--ink);margin-bottom:6px}
+.progress-head .track,.row .track{height:7px;background:var(--bg-deep);border-radius:6px;overflow:hidden;margin-top:6px}
+.progress-head .track i,.row .track i{display:block;height:100%;background:var(--tide)}
+.row.ach .track i{background:var(--accent)}
+
+.empty{color:var(--ink-faint);font-size:13px;text-align:center;padding:20px 10px;line-height:1.5}
+.empty.small{text-align:left;padding:0 0 10px}
+.sub-head{font-family:var(--font-display);font-size:15px;margin:18px 0 8px;color:var(--ink)}
+
+/* ---------- Inventori: chip pemilih equip ---------- */
+.inv-group{margin-bottom:14px}
+.inv-group b{font-size:13px;color:var(--ink-dim);display:block;margin-bottom:6px}
+.chiprow{display:flex;gap:6px;flex-wrap:wrap}
+.chipsel{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:14px;
+  padding:6px 12px;font-size:12.5px;cursor:pointer}
+.chipsel.on{background:var(--tide);border-color:var(--tide);color:#06201d;font-weight:600}
+.chipsel.locked{opacity:0.5}
+
+/* ---------- Akuarium ---------- */
+.tank-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:6px}
+.tank-tile{background:var(--panel);border-left:3px solid var(--rc,var(--line));border-radius:0 8px 8px 0;
+  padding:10px;display:flex;flex-direction:column;gap:2px}
+.tank-tile b{font-size:13.5px}
+.tank-tile span{font-size:11.5px;color:var(--ink-dim)}
+.tank-tile .link{align-self:flex-start;padding:2px 0;font-size:12px}
+
+/* ---------- Saklar pengaturan ---------- */
+.switch{width:44px;height:24px;border-radius:14px;background:var(--line);border:none;position:relative;cursor:pointer}
+.switch::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;
+  background:var(--ink);transition:left .15s}
+.switch.on{background:var(--tide)}
+.switch.on::after{left:22px;background:#fff}
+#setImportLbl{cursor:pointer}
