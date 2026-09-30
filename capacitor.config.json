@@ -1,0 +1,10 @@
+{
+  "appId": "com.fishercraft.app",
+  "appName": "Fisher Craft",
+  "webDir": "www",
+  "backgroundColor": "#0c2233",
+  "android": {
+    "backgroundColor": "#0c2233",
+    "allowMixedContent": false
+  }
+}
